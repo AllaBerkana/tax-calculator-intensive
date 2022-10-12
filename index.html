@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Налоговый калькулятор</title>
+
+  <link rel="stylesheet" href="style/normalize.css">
+  <link rel="stylesheet" href="style/style.css">
+  <script src="./script/script.js" defer></script>
+</head>
+
+<body>
+  <header class="header">
+    <h1 class="visually-hidden">Налоговый калькулятор</h1>
+    <div class="container">
+      <nav class="header__navigation navigation">
+        <ul class="navigation__list">
+          <li class="navigation__item">
+            <a href="#" class="navigation__link navigation__link_active" data-tax="self-employment">Самозанятый /
+              НПД</a>
+          </li>
+
+          <li class="navigation__item">
+            <a href="#" class="navigation__link" data-tax="tax-return">Налоговый вычет 13%</a>
+          </li>
+
+          <li class="navigation__item">
+            <a href="#" class="navigation__link" data-tax="usn">УСН</a>
+          </li>
+
+          <li class="navigation__item">
+            <a href="#" class="navigation__link" data-tax="osno">ОСНО</a>
+          </li>
+
+          <li class="navigation__item">
+            <a href="#" class="navigation__link" data-tax="ausn">АУСН</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="calc calc_active self-employment" data-tax="self-employment">
+        <h2 class="calc__title">Самозанятый</h2>
+
+        <p class="calc__description">Расчет налога для самозанятого или ИП НПД с учетом вычета</p>
+
+        <div class="calc__wrapper">
+          <div class="calc__form-wrapper">
+            <form class="calc__form">
+              <label class="calc__label calc__label_input">
+                <span class="calc__text">Доход от физических лиц</span>
+                <input class="calc__input" type="number" name="person">
+              </label>
+
+              <label class="calc__label calc__label_input">
+                <span class="calc__text">Доход от юридических лиц</span>
+                <input class="calc__input" type="number" name="entity">
+              </label>
+
+              <!-- <label class="calc__label calc__label_checkbox">
+                <input class="calc__checkbox" type="checkbox" name="addCompensation">
+                <span class="calc__text">Налоговый вычет</span>
+              </label>
+
+              <label class="calc__label calc__label_input calc__label_compensation">
+                <span class="calc__text">Остаток вычета</span>
+                <input class="calc__input" type="number" name="compensation">
+              </label> -->
+            </form>
+          </div>
+
+          <div class="calc__result result">
+            <h3 class="result__title">Результат</h3>
+
+            <div class="result__block">
+              <p class="result__caption">Налог</p>
+              <p class="result__tax result__tax_total">0</p>
+            </div>
+
+            <!-- <div class="result__block">
+              <p class="result__caption">Налоговый вычет</p>
+              <p class="result__tax">0</p>
+            </div>
+            
+            <div class="result__block">
+              <p class="result__caption">Остаток вычета</p>
+              <p class="result__tax">0</p>
+            </div>
+
+            <div class="result__block">
+              <p class="result__caption">Налог с учетом вычета</p>
+              <p class="result__tax">0</p> 
+            </div> -->
+          </div>
+        </div>
+
+        <div class="calc__reset">
+          <button class="calc__btn-reset" type="reset">Очистить</button>
+        </div>
+      </section>
+
+      <section class="calc tax-return" data-tax="tax-return">
+        <h2 class="calc__title">Налоговый вычет 13%</h2>
+
+        <p class="calc__description">Возмещаемый налог — 13% от суммы вычета, то есть от суммы оплаченных расходов.</p>
+
+        <div class="calc__wrapper">
+          <div class="calc__form-wrapper">
+            <form class="calc__form">
+              <label class="calc__label calc__label_input">
+                <span class="calc__text">Расходы</span>
+                <input class="calc__input" type="number" name="a">
+              </label>
+
+              <label class="calc__label calc__label_input">
+                <span class="calc__text">Оффициальный доход за год (с оплатой НДФЛ)</span>
+                <input class="calc__input" type="number" name="b">
+              </label>
+            </form>
+          </div>
+
+          <div class="calc__result result">
+            <h3 class="result__title">Результат</h3>
+
+            <div class="result__block">
+              <p class="result__caption">НДФЛ уплаченый</p>
+              <p class="result__tax">0</p>
+            </div>
+
+            <div class="result__block">
+              <p class="result__caption">Желаемый налоговый вычет</p>
+              <p class="result__tax">0</p>
+            </div>
+
+            <div class="result__block">
+              <p class="result__caption">Налоговый вычет</p>
+              <p class="result__tax">0</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="calc__reset">
+          <button class="calc__btn-reset" type="reset">Очистить</button>
+        </div>
+      </section>
+
+      <section class="calc usn" data-tax="usn">
+        <h2 class="calc__title">УСН</h2>
+
+        <p class="calc__description">Упрощенная система налогообложения для ИП и ООО</p>
+
+        <div class="calc__wrapper">
+          <div class="calc__form-wrapper">
+            <form class="calc__form">
+
+              <div class="calc__radio-wrapper">
+                <label class="calc__label calc__label_radio">
+                  <input class="calc__radio" type="radio" name="type">
+                  <span class="calc__text">Доходы</span>
+                </label>
+
+                <label class="calc__label calc__label_radio">
+                  <input class="calc__radio" type="radio" name="type">
+                  <span class="calc__text">ИП, Доходы минус расходы</span>
+                </label>
+
+                <label class="calc__label calc__label_radio">
+                  <input class="calc__radio" type="radio" name="type">
+                  <span class="calc__text">ООО, Доходы минус расходы</span>
+                </label>
+              </div>
+
+              <label class="calc__label calc__label_input">
+                <span class="calc__text">Доходы</span>
+                <input class="calc__input" type="number" name="a">
+              </label>
+
+              <label class="calc__label calc__label_input">
+                <span class="calc__text">Расходы</span>
+                <input class="calc__input" type="number" name="b">
+              </label>
+
+              <label class="calc__label calc__label_input">
+                <span class="calc__text">Сумма взносов за себя и сотрудников</span>
+                <input class="calc__input" type="number" name="с">
+              </label>
+
+              <label class="calc__label calc__label_input">
+                <span class="calc__text">Имущество</span>
+                <input class="calc__input" type="number" name="d">
+              </label>
+            </form>
+          </div>
+
+          <div class="calc__result result">
+            <h3 class="result__title">Результат</h3>
+
+            <div class="result__block">
+              <p class="result__caption">Налог</p>
+              <p class="result__tax">0</p>
+            </div>
+
+            <div class="result__block">
+              <p class="result__caption">Налог на имущество 2%</p>
+              <p class="result__tax">0</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="calc__reset">
+          <button class="calc__btn-reset" type="reset">Очистить</button>
+        </div>
+      </section>
+
+      <section class="calc osno" data-tax="osno">
+        <h2 class="calc__title">ОСН / ОСНО</h2>
+
+        <p class="calc__description">Общая система налогообложения</p>
+
+        <div class="calc__wrapper">
+          <div class="calc__form-wrapper">
+            <form class="calc__form">
+              <div class="calc__radio-wrapper">
+                <label class="calc__label calc__label_radio">
+                  <input class="calc__radio" type="radio" name="type">
+                  <span class="calc__text">ИП</span>
+                </label>
+
+                <label class="calc__label calc__label_radio">
+                  <input class="calc__radio" type="radio" name="type">
+                  <span class="calc__text">ООО</span>
+                </label>
+
+              </div>
+
+              <label class="calc__label calc__label_input">
+                <span class="calc__text">Доходы</span>
+                <input class="calc__input" type="number" name="a">
+              </label>
+
+              <label class="calc__label calc__label_input">
+                <span class="calc__text">Расходы</span>
+                <input class="calc__input" type="number" name="b">
+              </label>
+
+              <label class="calc__label calc__label_input">
+                <span class="calc__text">Имущество</span>
+                <input class="calc__input" type="number" name="c">
+              </label>
+            </form>
+          </div>
+
+          <div class="calc__result result">
+            <h3 class="result__title">Результат</h3>
+
+            <div class="result__block">
+              <p class="result__caption">НДС</p>
+              <p class="result__tax">0</p>
+            </div>
+
+            <div class="result__block">
+              <p class="result__caption">Налог на имущество</p>
+              <p class="result__tax">0</p>
+            </div>
+
+            <div class="result__block">
+              <p class="result__caption">НДФЛ(Вычет в виде расходов)</p>
+              <p class="result__tax">0</p>
+            </div>
+
+            <div class="result__block">
+              <p class="result__caption">НДФЛ(Вычет 20% от доходов)</p>
+              <p class="result__tax">0</p>
+            </div>
+
+            <div class="result__block">
+              <p class="result__caption">Налог на прибыль 20%</p>
+              <p class="result__tax">0</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="calc__reset">
+          <button class="calc__btn-reset" type="reset">Очистить</button>
+        </div>
+      </section>
+
+      <section class="calc ausn" data-tax="ausn">
+        <h2 class="calc__title">АУСН</h2>
+
+        <p class="calc__description">Автоматизированная упрощенная система налогообложения</p>
+
+        <div class="calc__wrapper">
+          <div class="calc__form-wrapper">
+            <form class="calc__form">
+              <div class="calc__radio-wrapper">
+                <label class="calc__label calc__label_radio">
+                  <input class="calc__radio" type="radio" name="type" value="income" checked>
+                  <span class="calc__text">Доходы</span>
+                </label>
+
+                <label class="calc__label calc__label_radio">
+                  <input class="calc__radio" type="radio" name="type" value="expenses">
+                  <span class="calc__text">Доходы минус расходы</span>
+                </label>
+              </div>
+
+              <label class="calc__label calc__label_input">
+                <span class="calc__text">Доходы</span>
+                <input class="calc__input" type="number" name="income">
+              </label>
+
+              <label class="calc__label calc__label_input calc__label_expenses">
+                <span class="calc__text">Расходы</span>
+                <input class="calc__input" type="number" name="expenses">
+              </label>
+            </form>
+          </div>
+
+          <div class="calc__result result">
+            <h3 class="result__title">Результат</h3>
+
+            <div class="result__block">
+              <p class="result__caption">Налог</p>
+              <p class="result__tax result__tax_total">0</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="calc__reset">
+          <button class="calc__btn-reset" type="reset">Очистить</button>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+
+</html>
