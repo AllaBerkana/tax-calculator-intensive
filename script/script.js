@@ -112,12 +112,37 @@ formSelf.addEventListener('input', () => {
         (benefit - resultBenefit) : 0;
     const finalTax = tax - (benefit - finalBenefit);
 
-
     resultTaxTotalSelf.textContent = formatCurrency(tax);
     resultTaxCompensation.textContent = formatCurrency(benefit - finalBenefit);
     resultTaxRestCompensation.textContent = formatCurrency(finalBenefit);
     resultTaxResult.textContent = formatCurrency(finalTax);
-
 })
+
+
+
+// ! Вот тут
+// форма osno 
+const osno = document.querySelector('.osno');
+const formOsno = osno.querySelector('.calc__form');
+const resultBlock = osno.querySelectorAll('.result__block');
+
+formOsno.addEventListener('input', (e) => {
+    e.preventDefault();
+    if (formOsno.type.value === 'person') {
+        resultBlock.forEach(item => {
+            console.log('item: ', item);
+
+            if (item.classList.contains('result__tax_entity-ocno')) {
+                item.style.display = 'none';
+                console.log('item: ', item);
+            }
+        })
+    }
+});
+
+
+
+
+
 
 

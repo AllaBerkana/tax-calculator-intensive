@@ -228,12 +228,12 @@
             <form class="calc__form">
               <div class="calc__radio-wrapper">
                 <label class="calc__label calc__label_radio">
-                  <input class="calc__radio" type="radio" name="type">
+                  <input class="calc__radio" type="radio" name="type" value="person">
                   <span class="calc__text">ИП</span>
                 </label>
 
                 <label class="calc__label calc__label_radio">
-                  <input class="calc__radio" type="radio" name="type">
+                  <input class="calc__radio" type="radio" name="type" value="entity">
                   <span class="calc__text">ООО</span>
                 </label>
 
@@ -271,17 +271,17 @@
 
             <div class="result__block">
               <p class="result__caption">НДФЛ(Вычет в виде расходов)</p>
-              <p class="result__tax">0</p>
+              <p class="result__tax result__tax_person-outcome">0</p>
             </div>
 
             <div class="result__block">
               <p class="result__caption">НДФЛ(Вычет 20% от доходов)</p>
-              <p class="result__tax">0</p>
+              <p class="result__tax result__tax_person-income">0</p>
             </div>
 
             <div class="result__block">
               <p class="result__caption">Налог на прибыль 20%</p>
-              <p class="result__tax">0</p>
+              <p class="result__tax result__tax_entity-ocno">0</p>
             </div>
           </div>
         </div>
